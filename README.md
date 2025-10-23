@@ -3,7 +3,6 @@
 A simple RESTful Todo API built with Spring Boot, designed for teaching CI/CD concepts with comprehensive testing and automated workflows.
 
 ![CI](https://github.com/allen3325/CICD-Test/workflows/CI/badge.svg)
-[![codecov](https://codecov.io/gh/allen3325/CICD-Test/branch/main/graph/badge.svg)](https://codecov.io/gh/allen3325/CICD-Test)
 ![Java](https://img.shields.io/badge/Java-17-orange)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
