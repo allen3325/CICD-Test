@@ -21,12 +21,18 @@ public class TodoController {
     private final TodoService todoService;
 
     @GetMapping
-    public ResponseEntity<List<TodoResponse>> getAllTodos() {
-        List<TodoResponse> todos = todoService.getAllTodos()
-                .stream()
+    public ResponseEntity<List<TodoResponse>> getAllTodos(
+            @RequestParam(required = false) Boolean completed) {
+        List<Todo> todos;
+        if (completed != null) {
+            todos = todoService.getTodosByCompleted(completed);
+        } else {
+            todos = todoService.getAllTodos();
+        }
+        List<TodoResponse> responses = todos.stream()
                 .map(TodoResponse::fromEntity)
                 .collect(Collectors.toList());
-        return ResponseEntity.ok(todos);
+        return ResponseEntity.ok(responses);
     }
 
     @GetMapping("/{id}")
