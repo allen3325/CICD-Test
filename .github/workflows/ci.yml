@@ -5,7 +5,8 @@ on:
     branches: [main]
 
 jobs:
-  build-and-test:
+  unit-tests:
+    name: Unit Tests (H2)
     runs-on: ubuntu-latest
 
     steps:
@@ -26,8 +27,33 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Run Tests
-        run: mvn clean test
+      - name: Run Unit Tests
+        run: mvn clean test -Dtest=*Test -Dspring.profiles.active=test
 
       - name: Generate JaCoCo Report
         run: mvn jacoco:report
+
+  integration-tests:
+    name: Integration Tests (Testcontainers)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Cache Maven Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Run Integration Tests
+        run: mvn test -Dtest=*IntegrationTest

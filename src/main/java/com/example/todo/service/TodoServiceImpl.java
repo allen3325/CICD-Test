@@ -22,6 +22,11 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
+    public List<Todo> getTodosByCompleted(Boolean completed) {
+        return todoRepository.findByCompleted(completed);
+    }
+
+    @Override
     public Todo getTodoById(Long id) {
         return todoRepository.findById(id)
                 .orElseThrow(() -> new TodoNotFoundException(id));

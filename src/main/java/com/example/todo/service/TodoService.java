@@ -9,6 +9,8 @@ public interface TodoService {
 
     List<Todo> getAllTodos();
 
+    List<Todo> getTodosByCompleted(Boolean completed);
+
     Todo getTodoById(Long id);
 
     Todo createTodo(TodoRequest request);
