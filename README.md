@@ -168,15 +168,6 @@ This project uses GitHub Actions for continuous integration:
   3. Cache Maven dependencies
   4. Run tests
   5. Generate JaCoCo coverage report
-  6. Verify coverage >= 70%
-  7. Upload coverage to Codecov
-  8. Archive test reports as artifacts
-
-## Validation Rules
-
-- `title`: Required, 1-100 characters
-- `description`: Optional, max 500 characters
-- `completed`: Optional, defaults to false
 
 ## Error Responses
 
@@ -186,10 +177,3 @@ This project uses GitHub Actions for continuous integration:
 | Validation failure | 400 | `{"errors": ["title must not be blank", ...]}` |
 | Server error | 500 | `{"error": "Internal server error"}` |
 
-## License
-
-MIT License - This project is intended for educational purposes.
-
-## Author
-
-Created for CICD teaching demonstration purposes.
